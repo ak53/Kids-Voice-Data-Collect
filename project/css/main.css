@@ -9,12 +9,17 @@ body {
 h1 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  margin-top: 40px;
-  font-size: 48px;
+/*  margin-top: 20px;
+*/  font-size: 48px;
+}
+
+.word_image{
+  height: 400px;
+  width: 400px;
 }
 
 p {
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 button {
@@ -23,8 +28,8 @@ button {
 
 .page-header {
   background-color: #00bda5;
-  padding-top: 40px;
-  padding-bottom: 80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   color: #ffffff;
 }
 
@@ -43,7 +48,11 @@ h1, h2 {
   font-size: 2rem;
   text-align: center;
   font-weight: normal;
-  padding: 0.5rem 0 0 0;
+/*  padding: 0.5rem 0 0 0;
+*/}
+
+.word{
+  font-size: 4rem;
 }
 
 .main-controls {
@@ -90,7 +99,7 @@ button:active {
 
 /* Make the clips use as much space as possible, and
  * also show a scrollbar when there are too many clips to show
- * in the available space */
+ * in the available space 
 .sound-clips {
   flex: 1;
   overflow: auto;

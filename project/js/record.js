@@ -1,6 +1,8 @@
 // set up basic variables for app
 count = 0;
 
+var state = window.localStorage.getItem("state"); //initially 1
+
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
 const soundClips = document.querySelector('.sound-clips');
@@ -109,62 +111,73 @@ if (navigator.mediaDevices.getUserMedia) {
       }
 
       submitButton.onclick = function(e) {
-        var file = blob
-        file.name = clipName
-        console.log(file)
-        var storage = firebase.storage();
+      //   var file = blob
+      //   file.name = clipName
+      //   console.log(file)
+      //   var storage = firebase.storage();
 
-        // Create a storage reference from our storage service
-        var storageRef = storage.ref();
-      // File or Blob named mountains.jpg
+      //   // Create a storage reference from our storage service
+      //   var storageRef = storage.ref();
+      // // File or Blob named mountains.jpg
 
-        // Create the file metadata
-        var metadata = {
-          contentType: 'audio/oog'
-        };
+      //   // Create the file metadata
+      //   var metadata = {
+      //     contentType: 'audio/oog'
+      //   };
 
-        // Upload file and metadata to the object 'images/mountains.jpg'
-        var uploadTask = storageRef.child('audio/' + file.name).put(file, metadata);
+      //   // Upload file and metadata to the object 'images/mountains.jpg'
+      //   var uploadTask = storageRef.child('audio/' + file.name).put(file, metadata);
 
-        // Listen for state changes, errors, and completion of the upload.
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
-          function(snapshot) {
-            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
-            switch (snapshot.state) {
-              case firebase.storage.TaskState.PAUSED: // or 'paused'
-                console.log('Upload is paused');
-                break;
-              case firebase.storage.TaskState.RUNNING: // or 'running'
-                console.log('Upload is running');
-                break;
-            }
-          }, function(error) {
+      //   // Listen for state changes, errors, and completion of the upload.
+      //   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+      //     function(snapshot) {
+      //       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      //       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      //       console.log('Upload is ' + progress + '% done');
+      //       switch (snapshot.state) {
+      //         case firebase.storage.TaskState.PAUSED: // or 'paused'
+      //           console.log('Upload is paused');
+      //           break;
+      //         case firebase.storage.TaskState.RUNNING: // or 'running'
+      //           console.log('Upload is running');
+      //           break;
+      //       }
+      //     }, function(error) {
 
-          // A full list of error codes is available at
-          // https://firebase.google.com/docs/storage/web/handle-errors
-          switch (error.code) {
-            case 'storage/unauthorized':
-              // User doesn't have permission to access the object
-              break;
+      //     // A full list of error codes is available at
+      //     // https://firebase.google.com/docs/storage/web/handle-errors
+      //     switch (error.code) {
+      //       case 'storage/unauthorized':
+      //         // User doesn't have permission to access the object
+      //         break;
 
-            case 'storage/canceled':
-              // User canceled the upload
-              break;
+      //       case 'storage/canceled':
+      //         // User canceled the upload
+      //         break;
 
-            // ...
+      //       // ...
 
-            case 'storage/unknown':
-              // Unknown error occurred, inspect error.serverResponse
-              break;
-          }
-        }, function() {
-          // Upload completed successfully, now we can get the download URL
-          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-            console.log('File available at', downloadURL);
-          });
-        });
+      //       case 'storage/unknown':
+      //         // Unknown error occurred, inspect error.serverResponse
+      //         break;
+      //     }
+      //   }, function() {
+      //     // Upload completed successfully, now we can get the download URL
+      //     uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+      //       console.log('File available at', downloadURL);
+      //     });
+      //   });
+
+        state++;
+        localStorage.setItem("state", state); //apple
+        var loc = location.href
+        var lastIndex = loc.lastIndexOf("/")
+        loc = loc.slice(0,lastIndex + 1)
+        console.log(state)
+        console.log(state.toString())
+        loc = loc.concat(state.toString())
+        console.log(loc)
+        // location.href=loc
       }
 
 

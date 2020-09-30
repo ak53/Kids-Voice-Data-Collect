@@ -18,11 +18,15 @@ app.get('/about', function(request, response) {
 app.get('/projects', function(request, response) {
   response.render('pages/projects');
 });
-
+app.get('/2', function(request, response) {
+  response.render('pages/2');
+});
+app.get('/3', function(request, response) {
+  response.render('pages/3');
+});
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
 
 // This file is what handles incoming requests and
 // serves files to the browser, or executes server-side code
