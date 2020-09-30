@@ -9,16 +9,40 @@
   <div class="page-header">
 
   
-    <h1>Projects</h1>
+    <h1>Program</h1>
   </div>
     <% include ../helpers/navbar %>
 
-  <p>Click on the button for a surprise.</p>
+    <p>Let's record. Say Apple.</p>
 
-  <button onClick="showPicture()" class="btn btn-dark">Click me</button>
+ <div class="wrapper">
+      <section class="main-controls">
+        <canvas class="visualizer" height="60px"></canvas>
+        <div id="buttons">
+          <button class="record">Record</button>
+          <button class="stop">Stop</button>
+        </div>
+      </section>
 
-  <div id="image"></div>
-  
+      <section class="sound-clips">
+      </section>
+    </div>
+<!--     <button class="submit">Stop</button>
+ -->
+<!--     <button class = "submit">Submit</button>
+ -->
+<!--      <script>
+      recorder.addEventListener('change',function(e) {
+        const file = e.target.files[0];
+        console.log(file)
+        const url = URL.createObjectURL(file);
+        player.src = url;
+      });
+    </script>  -->
+
+
+
 </body>
+<script src="js/record.js"></script>
 
 </html>
