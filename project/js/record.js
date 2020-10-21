@@ -62,8 +62,9 @@ if (navigator.mediaDevices.getUserMedia) {
       count++;
       console.log("data available after MediaRecorder.stop() called.");
 
-      const clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
+      // const clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
 
+      const clipName = nextState-1
       if (count>1){
         var c = soundClips.children;
         var i;
@@ -105,7 +106,7 @@ if (navigator.mediaDevices.getUserMedia) {
       audio.src = audioURL;
       console.log("recorder stopped");
 
-              var file = blob
+        var file = blob
         file.name = clipName
         console.log(file)
         var storage = firebase.storage();
@@ -119,8 +120,9 @@ if (navigator.mediaDevices.getUserMedia) {
           contentType: 'audio/oog'
         };
 
+        folder = window.localStorage.getItem("user")
         // Upload file and metadata to the object 'images/mountains.jpg'
-        var uploadTask = storageRef.child('audio/' + file.name).put(file, metadata);
+        var uploadTask = storageRef.child(folder+'/' + file.name).put(file, metadata);
 
         // Listen for state changes, errors, and completion of the upload.
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
@@ -159,6 +161,16 @@ if (navigator.mediaDevices.getUserMedia) {
           // Upload completed successfully, now we can get the download URL
           uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log('File available at', downloadURL);
+            submitButton.onclick = function(e) {
+
+          // if nextState!="end"{
+            var loc = location.href
+            var lastIndex = loc.lastIndexOf("/")
+            loc = loc.slice(0,lastIndex + 1)
+            loc = loc.concat(nextState.toString())
+            location.href=loc
+          
+            }
           });
         });
 
@@ -167,16 +179,7 @@ if (navigator.mediaDevices.getUserMedia) {
         evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
       }
 
-      submitButton.onclick = function(e) {
 
-        // if nextState!="end"{
-          var loc = location.href
-          var lastIndex = loc.lastIndexOf("/")
-          loc = loc.slice(0,lastIndex + 1)
-          loc = loc.concat(nextState.toString())
-          location.href=loc
-        
-      }
 
 
       clipLabel.onclick = function() {
