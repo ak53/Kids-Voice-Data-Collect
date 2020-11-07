@@ -24,7 +24,7 @@ var dict = { 1 : 'APPLE' ,
              22 : 'VASE' ,
              23 : 'WATCH' ,
              24 : 'XYLOPHONE' ,
-             25 : 'YAAK' ,
+             25 : 'YAK' ,
              26 : 'ZEBRA' ,
            };
 var nextState = window.localStorage.getItem("nextState");
@@ -200,6 +200,10 @@ if (navigator.mediaDevices.getUserMedia) {
               }
               s = "images/"+nextState+".jpeg";
               document.getElementById("word_img").src = s;
+              s2 = "audios/"+nextState+".mp3";
+              var audio = document.getElementById('audio');
+              document.getElementById('track').src = s2;
+              audio.load();
 
               // temp = '<img class="rounded-circle src="images/2.jpeg"/>'
               // $(".word_image").append(temp);
