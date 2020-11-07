@@ -4,6 +4,11 @@ body {
   text-align: center;
   color: #343a40;
   font-size: 22px;
+  background-image: url("3.jpg");
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+  background-color: #cccccc;
 }
 
 .welcome_text{
@@ -18,20 +23,39 @@ h1 {
 */  font-size: 48px;
 }
 
-.word_image1{
+.white{
+  z-index: 1;
   height: 400px;
   width: 400px;
+  position: absolute;
 }
 
-.word_image2{
+.word_image{
+  height: 400px;
+  width: 400px;
+  z-index: 2;
+  position: relative;
+  object-fit: contain;
+
+}
+
+/*.word_image2{
   height: 350px;
   width: 400px;
+  z-index: 2;
+    position: relative;
+    object-fit: contain;
+
 }
 
 .word_image3{
   height: 400px;
   width: 400px;
-}
+  z-index: 2;
+    position: relative;
+    object-fit: contain;
+
+}*/
 
 p {
   margin-top: 40px;
@@ -134,6 +158,12 @@ audio {
   margin: 1rem auto 0.5rem;
 }
 
+.sample audio {
+  width: 90%;
+  display: block;
+  margin: 1rem auto 0.5rem;
+}
+
 .clip p {
   display: inline-block;
   font-size: 1rem;
@@ -150,6 +180,11 @@ button.delete {
   font-size: 0.8rem;
 }
 
+button.submit {
+/*  background: blue;
+*/  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
 /* Checkbox hack to control information box display 
 */
 label {

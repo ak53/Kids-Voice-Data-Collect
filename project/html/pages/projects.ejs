@@ -4,6 +4,7 @@
 </head>
 
 <body>
+
   <!-- the classes 'page-header' and 'btn btn-dark' create bootstrap components.  -->
   <!-- Check out more components here: http://getbootstrap.com/components/ -->
   <div class="page-header">
@@ -11,9 +12,17 @@
   
     <h1>Program</h1>
   </div>
+  <p>Listen to the audio below.</p>
+  <div class="sample">
+      <audio controls>
+      <source src="audios/1.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
     <p>Let's record. Say</p>
     <h1 class="word">APPLE</h1>
-    <img class="rounded-circle word_image1" src="images/1.png"/>
+    <img class="rounded-circle white" src="images/white.jpeg">
+    <img class="rounded-circle word_image" id="word_img" src="images/1.jpeg"/>
     <% include ../helpers/record %>
 </body>
 <script type="text/javascript">

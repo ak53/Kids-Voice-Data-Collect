@@ -1,7 +1,33 @@
 // set up basic variables for app
 count = 0;
-
-var nextState = window.localStorage.getItem("nextState"); 
+var dict = { 1 : 'APPLE' , 
+             2 : 'BALL' , 
+             3 : 'CAT' ,
+             4 : 'DOLL' ,
+             5 : 'ELEPHANT' ,
+             6 : 'FISH' ,
+             7 : 'GIRL' ,
+             8 : 'HEN' ,
+             9 : 'ICE-CREAM' ,
+             10 : 'JUG' ,
+             11 : 'KING' ,
+             12 : 'LION' ,
+             13 : 'MONKEY' ,
+             14 : 'NET' ,
+             15 : 'ORANGE' ,
+             16 : 'PENCIL' ,
+             17 : 'QUEEN' ,
+             18 : 'RABBIT' ,
+             19 : 'STAR' ,
+             20 : 'TREE' ,
+             21 : 'UMBRELLA' ,
+             22 : 'VASE' ,
+             23 : 'WATCH' ,
+             24 : 'XYLOPHONE' ,
+             25 : 'YAAK' ,
+             26 : 'ZEBRA' ,
+           };
+var nextState = window.localStorage.getItem("nextState");
 
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
@@ -64,7 +90,10 @@ if (navigator.mediaDevices.getUserMedia) {
 
       // const clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
 
-      const clipName = nextState-1
+      var clipName = nextState-1
+      if (nextState=="end"){
+        clipName="last"
+      }
       if (count>1){
         var c = soundClips.children;
         var i;
@@ -87,14 +116,14 @@ if (navigator.mediaDevices.getUserMedia) {
       submitButton.textContent = 'Submit';
       submitButton.className = 'submit';
 
-      if(clipName === null) {
-        clipLabel.textContent = 'My unnamed clip';
-      } else {
-        clipLabel.textContent = clipName;
-      }
+      // if(clipName === null) {
+      //   clipLabel.textContent = 'My unnamed clip';
+      // } else {
+      //   clipLabel.textContent = clipName;
+      // }
 
       clipContainer.appendChild(audio);
-      clipContainer.appendChild(clipLabel);
+      // clipContainer.appendChild(clipLabel);
       clipContainer.appendChild(deleteButton);
       clipContainer.appendChild(submitButton);
       soundClips.appendChild(clipContainer);
@@ -162,13 +191,27 @@ if (navigator.mediaDevices.getUserMedia) {
           uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log('File available at', downloadURL);
             submitButton.onclick = function(e) {
+              if (nextState>26){
+                var loc = location.href
+                var index = loc.lastIndexOf("/")
+                template = loc.slice(0,index + 1)
+                loc = template.concat("end")
+                location.href=loc                
+              }
+              s = "images/"+nextState+".jpeg";
+              document.getElementById("word_img").src = s;
 
-          // if nextState!="end"{
-            var loc = location.href
-            var lastIndex = loc.lastIndexOf("/")
-            loc = loc.slice(0,lastIndex + 1)
-            loc = loc.concat(nextState.toString())
-            location.href=loc
+              // temp = '<img class="rounded-circle src="images/2.jpeg"/>'
+              // $(".word_image").append(temp);
+              $(".word").html(dict[nextState]);
+              nextState++;
+
+            // if nextState!="end"{
+              // var loc = location.href
+              // var index = loc.lastIndexOf("/")
+              // template = loc.slice(0,index + 1)
+              // loc = template.concat(nextState.toString())
+              // location.href=loc
           
             }
           });
