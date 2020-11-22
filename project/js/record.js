@@ -60,13 +60,16 @@ if (navigator.mediaDevices.getUserMedia) {
     visualize(stream);
 
     record.onclick = function() {
-      mediaRecorder.start();
-      console.log(mediaRecorder.state);
-      console.log("recorder started");
-      record.style.background = "red";
-
-      stop.disabled = false;
-      record.disabled = true;
+      var audio = document.getElementById('audio');
+      console.log(audio.paused)
+      if (audio.paused){
+        mediaRecorder.start();
+        console.log(mediaRecorder.state);
+        console.log("recorder started");
+        record.style.background = "red";
+        stop.disabled = false;
+        record.disabled = true;
+      }
     }
 
     stop.onclick = function() {
