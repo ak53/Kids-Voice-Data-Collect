@@ -20,14 +20,21 @@
   </div>
 
     <p>Let's record. Say</p>
-    <h1 class="word">APPLE</h1>
+    <h1 class="word">WORD</h1>
     <img class="rounded-circle white" src="images/white.jpeg">
     <img class="rounded-circle word_image" id="word_img" src="images/1.jpeg"/>
     <% include ../helpers/record %>
 </body>
-<script type="text/javascript">
-  window.localStorage.setItem("nextState",2)
-</script>
 <script src="js/record.js"></script>
-
+<script type="text/javascript">
+  nextState = window.localStorage.getItem("nextState")
+  s = "images/"+nextState+".jpeg";
+  document.getElementById("word_img").src = s;
+  s2 = "audios/"+nextState+".mp3";
+  var audio = document.getElementById('audio');
+  document.getElementById('track').src = s2;
+  audio.load();
+  $(".word").html(dict[nextState]);
+  nextState++;
+</script>
 </html>
