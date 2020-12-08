@@ -44,6 +44,7 @@ function handleSignIn(){
 	  // The signed-in user info.
 	  var user = result.user;
 	  console.log(user.email)
+	  window.localStorage.setItem("user",user.email)
 	  var files_count=0;
 	  	var storageRef = firebase.storage().ref(user.email);
 	  	storageRef.listAll().then(function(result){
