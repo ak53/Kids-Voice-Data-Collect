@@ -8,39 +8,12 @@ function showPicture(){
 }
 
 function handleSignIn(){
-	// console.log("Hello")
 	var provider = new firebase.auth.GoogleAuthProvider();
-	// firebase.auth().signInWithRedirect(provider);
-	// console.log(firebase.auth())
-	// console.log(firebase.auth().getRedirectResult())
-	// firebase.auth().getRedirectResult().then(function(result) {
-	//   if (result.credential) {
-	//     // This gives you a Google Access Token. You can use it to access the Google API.
-	//     var token = result.credential.accessToken;
-	//     console.log("inside if")
-	//     // ...
-	//   }
-	//   // The signed-in user info.
-	//   var user = result.user;
-	//   console.log(user.email)
-	//   if (user.email){
-	//   	// changePage()
-	// 	}
-
-	// }).catch(function(error) {
-	//   // Handle Errors here.
-	//   var errorCode = error.code;
-	//   var errorMessage = error.message;
-	//   // The email of the user's account used.
-	//   var email = error.email;
-	//   // The firebase.auth.AuthCredential type that was used.
-	//   var credential = error.credential;
-	//   // ...
-	// });
 
 	firebase.auth().signInWithPopup(provider).then(function(result) {
 	  // This gives you a Google Access Token. You can use it to access the Google API.
 	  var token = result.credential.accessToken;
+	  window.localStorage.setItem("nextState",1)
 	  // The signed-in user info.
 	  var user = result.user;
 	  console.log(user.email)
@@ -54,12 +27,12 @@ function handleSignIn(){
 	  	console.log(files_count);
 	  	console.log("change!!!")
 	  	window.localStorage.setItem("nextState",files_count+1)
-	  	// changePage()
+	  	changePage()
 	  	}), function(error){
 	  		console.log(error)
 	  	};
 
-	  changePage()
+	  // changePage()
 
 
 	  // prev = window.localStorage.getItem("user")
