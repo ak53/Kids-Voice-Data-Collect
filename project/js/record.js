@@ -2,31 +2,31 @@
 count = 0;
 var dict = { 1 : 'APPLE' , 
              2 : 'BALL' , 
-             3 : 'CAT' ,
-             4 : 'DOLL' ,
-             5 : 'ELEPHANT' ,
-             6 : 'FISH' ,
-             7 : 'GIRL' ,
-             8 : 'HEN' ,
-             9 : 'ICE-CREAM' ,
-             10 : 'JUG' ,
-             11 : 'KING' ,
-             12 : 'LION' ,
-             13 : 'MONKEY' ,
-             14 : 'NET' ,
-             15 : 'ORANGE' ,
-             16 : 'PENCIL' ,
+             3 : 'BEACH',
+             4 : 'BOY' ,
+             5 : 'CHAIR' ,
+             6 : 'CROWN' ,
+             7 : 'DOG' ,
+             8 : 'FISH' ,
+             9 : 'FLOWER',
+             10 : 'HOME' ,
+             11 : 'ICE' ,
+             12 : 'JUG' ,
+             13 : 'KING' ,
+             14 : 'MOTHER' ,
+             15 : 'PENCIL' ,
+             16 : 'PHONE',
              17 : 'QUEEN' ,
-             18 : 'RABBIT' ,
-             19 : 'STAR' ,
-             20 : 'TREE' ,
-             21 : 'UMBRELLA' ,
-             22 : 'VASE' ,
-             23 : 'WATCH' ,
-             24 : 'XYLOPHONE' ,
-             25 : 'YAK' ,
-             26 : 'ZEBRA' ,
+             18 : 'REINDEER',
+             19 : 'SHIRT',
+             20 : 'STAR' ,
+             21 : 'TELEVISION' ,
+             22 : 'THIEF',
+             23 : 'YELLOW' ,
+             24 : 'ZEBRA' ,
+             25 : 'ZOO', 
            };
+
 var nextState = window.localStorage.getItem("nextState");
 
 const record = document.querySelector('.record');
@@ -194,7 +194,7 @@ if (navigator.mediaDevices.getUserMedia) {
           uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
             console.log('File available at', downloadURL);
             submitButton.onclick = function(e) {
-              if (nextState>26){
+              if (nextState>25){
                 var loc = location.href
                 var index = loc.lastIndexOf("/")
                 template = loc.slice(0,index + 1)
