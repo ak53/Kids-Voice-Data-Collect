@@ -1,4 +1,11 @@
-# Base Web App
+# Kid's Voice Data Collect
+
+The running app is avaialable here: https://pacific-lake-68286.herokuapp.com/
+The website is hosted on keroku and uses firebase as database manager.
+
+
+##############################################################################################################################################################
+Creation instruction as per the base web app I used to build upon.
 
 Check it out at: https://intense-depths-97149.herokuapp.com/
 
